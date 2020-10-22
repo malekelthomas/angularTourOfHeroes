@@ -10,6 +10,7 @@ import { HeroService } from '../hero.service';
   styleUrls: ['./hero-detail.component.css']
 })
 export class HeroDetailComponent implements OnInit {
+  hero: Hero;
 
   constructor(
     private route: ActivatedRoute, //hold info about the route to this instance
@@ -20,8 +21,6 @@ export class HeroDetailComponent implements OnInit {
   ngOnInit(): void {
     this.getHero();
   }
-
-  @Input() hero: Hero;
 
   getHero(): void {
     const id = +this.route.snapshot.paramMap.get('id'); //+ operator converts string to num
@@ -39,13 +38,6 @@ export class HeroDetailComponent implements OnInit {
       .subscribe(()=>this.goBack());
   }
 
-  add(name: string): void {
-    name = name.trim();
-    if (!name){ return; }
-    this.heroService.addHero({ name } as Hero)
-      .subscribe(hero => {
-        this.heroes.push(hero);
-      })
-  }
+
 
 }
