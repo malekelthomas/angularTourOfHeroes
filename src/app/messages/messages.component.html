@@ -1,1 +1,6 @@
-<p>messages works!</p>
+<div *ngIf="messageService.messages.length"> <!-- if there are messages-->
+  <h2></h2>
+  <button class="clear"
+          (click)="messageService.clear()">clear</button> <!-- use clear method from service to delete messages -->
+  <div *ngFor='let message of messageService.messages'> {{message}}</div>
+</div>
