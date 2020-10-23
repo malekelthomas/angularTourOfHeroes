@@ -107,7 +107,7 @@ private handleError<T>(operation = 'operation', result?: T) {
       return of([]);
     }
 
-    return this.http.get<Hero[]>(`${this.heroesUrl}/?name=${term}`)
+    return this.http.get<Hero[]>(`${this.heroesUrl}/?name=${term}`) //query string
       .pipe(
         tap(x => x.length ?
           this.log(`found heroes matching "${term}"`) :
